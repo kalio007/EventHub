@@ -217,9 +217,9 @@ body {
     @apply bg-grey-50 flex flex-1 placeholder:text-grey-500 p-regular-16 px-5 py-3 border-none focus-visible:ring-transparent !important;
   }
 
-  /* .button {
+  .button {
     @apply rounded-full h-[54px] p-regular-16;
-  } */
+  }
 
   .select-item {
     @apply py-3 cursor-pointer  focus:bg-primary-50;
