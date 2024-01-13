@@ -11,7 +11,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         type={type}
         className={cn(
-          "tailwinf.config.tsflex tailwinf.config.tsh-10 tailwinf.config.tsw-full tailwinf.config.tsrounded-md tailwinf.config.tsborder tailwinf.config.tsborder-input tailwinf.config.tsbg-background tailwinf.config.tspx-3 tailwinf.config.tspy-2 tailwinf.config.tstext-sm tailwinf.config.tsring-offset-background file:tailwinf.config.tsborder-0 file:tailwinf.config.tsbg-transparent file:tailwinf.config.tstext-sm file:tailwinf.config.tsfont-medium placeholder:tailwinf.config.tstext-muted-foreground focus-visible:tailwinf.config.tsoutline-none focus-visible:tailwinf.config.tsring-2 focus-visible:tailwinf.config.tsring-ring focus-visible:tailwinf.config.tsring-offset-2 disabled:tailwinf.config.tscursor-not-allowed disabled:tailwinf.config.tsopacity-50",
+          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
           className
         )}
         ref={ref}

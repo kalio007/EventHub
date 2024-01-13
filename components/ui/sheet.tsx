@@ -21,7 +21,7 @@ const SheetOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(
-      "tailwinf.config.tsfixed tailwinf.config.tsinset-0 tailwinf.config.tsz-50 tailwinf.config.tsbg-black/80 tailwinf.config.ts data-[state=open]:tailwinf.config.tsanimate-in data-[state=closed]:tailwinf.config.tsanimate-out data-[state=closed]:tailwinf.config.tsfade-out-0 data-[state=open]:tailwinf.config.tsfade-in-0",
+      "fixed inset-0 z-50 bg-background/80 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
     {...props}
@@ -31,16 +31,16 @@ const SheetOverlay = React.forwardRef<
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
 
 const sheetVariants = cva(
-  "tailwinf.config.tsfixed tailwinf.config.tsz-50 tailwinf.config.tsgap-4 tailwinf.config.tsbg-background tailwinf.config.tsp-6 tailwinf.config.tsshadow-lg tailwinf.config.tstransition tailwinf.config.tsease-in-out data-[state=open]:tailwinf.config.tsanimate-in data-[state=closed]:tailwinf.config.tsanimate-out data-[state=closed]:tailwinf.config.tsduration-300 data-[state=open]:tailwinf.config.tsduration-500",
+  "fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
   {
     variants: {
       side: {
-        top: "tailwinf.config.tsinset-x-0 tailwinf.config.tstop-0 tailwinf.config.tsborder-b data-[state=closed]:tailwinf.config.tsslide-out-to-top data-[state=open]:tailwinf.config.tsslide-in-from-top",
+        top: "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
         bottom:
-          "tailwinf.config.tsinset-x-0 tailwinf.config.tsbottom-0 tailwinf.config.tsborder-t data-[state=closed]:tailwinf.config.tsslide-out-to-bottom data-[state=open]:tailwinf.config.tsslide-in-from-bottom",
-        left: "tailwinf.config.tsinset-y-0 tailwinf.config.tsleft-0 tailwinf.config.tsh-full tailwinf.config.tsw-3/4 tailwinf.config.tsborder-r data-[state=closed]:tailwinf.config.tsslide-out-to-left data-[state=open]:tailwinf.config.tsslide-in-from-left sm:tailwinf.config.tsmax-w-sm",
+          "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
+        left: "inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
         right:
-          "tailwinf.config.tsinset-y-0 tailwinf.config.tsright-0 tailwinf.config.tsh-full tailwinf.config.tsw-3/4 tailwinf.config.ts tailwinf.config.tsborder-l data-[state=closed]:tailwinf.config.tsslide-out-to-right data-[state=open]:tailwinf.config.tsslide-in-from-right sm:tailwinf.config.tsmax-w-sm",
+          "inset-y-0 right-0 h-full w-3/4  border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
       },
     },
     defaultVariants: {
@@ -65,9 +65,9 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className="tailwinf.config.tsabsolute tailwinf.config.tsright-4 tailwinf.config.tstop-4 tailwinf.config.tsrounded-sm tailwinf.config.tsopacity-70 tailwinf.config.tsring-offset-background tailwinf.config.tstransition-opacity hover:tailwinf.config.tsopacity-100 focus:tailwinf.config.tsoutline-none focus:tailwinf.config.tsring-2 focus:tailwinf.config.tsring-ring focus:tailwinf.config.tsring-offset-2 disabled:tailwinf.config.tspointer-events-none data-[state=open]:tailwinf.config.tsbg-secondary">
-        <X className="tailwinf.config.tsh-4 tailwinf.config.tsw-4" />
-        <span className="tailwinf.config.tssr-only">Close</span>
+      <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
+        <X className="h-4 w-4" />
+        <span className="sr-only">Close</span>
       </SheetPrimitive.Close>
     </SheetPrimitive.Content>
   </SheetPortal>
@@ -80,7 +80,7 @@ const SheetHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "tailwinf.config.tsflex tailwinf.config.tsflex-col tailwinf.config.tsspace-y-2 tailwinf.config.tstext-center sm:tailwinf.config.tstext-left",
+      "flex flex-col space-y-2 text-center sm:text-left",
       className
     )}
     {...props}
@@ -94,7 +94,7 @@ const SheetFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "tailwinf.config.tsflex tailwinf.config.tsflex-col-reverse sm:tailwinf.config.tsflex-row sm:tailwinf.config.tsjustify-end sm:tailwinf.config.tsspace-x-2",
+      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
       className
     )}
     {...props}
@@ -108,7 +108,7 @@ const SheetTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
-    className={cn("tailwinf.config.tstext-lg tailwinf.config.tsfont-semibold tailwinf.config.tstext-foreground", className)}
+    className={cn("text-lg font-semibold text-foreground", className)}
     {...props}
   />
 ))
@@ -120,7 +120,7 @@ const SheetDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Description
     ref={ref}
-    className={cn("tailwinf.config.tstext-sm tailwinf.config.tstext-muted-foreground", className)}
+    className={cn("text-sm text-muted-foreground", className)}
     {...props}
   />
 ))

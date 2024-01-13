@@ -18,8 +18,8 @@ const Separator = React.forwardRef<
       decorative={decorative}
       orientation={orientation}
       className={cn(
-        "tailwinf.config.tsshrink-0 tailwinf.config.tsbg-border",
-        orientation === "horizontal" ? "tailwinf.config.tsh-[1px] tailwinf.config.tsw-full" : "tailwinf.config.tsh-full tailwinf.config.tsw-[1px]",
+        "shrink-0 bg-border",
+        orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
         className
       )}
       {...props}

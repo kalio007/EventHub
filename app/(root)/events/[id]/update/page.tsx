@@ -1,66 +1,35 @@
-"use client";
+import EventForm from "@/components/shared/EventForm"
+import { getEventById } from "@/lib/actions/event.actions"
+import { auth } from "@clerk/nextjs";
 
-import { useCallback, Dispatch, SetStateAction } from "react";
-import type { FileWithPath } from "@uploadthing/react";
-import { useDropzone } from "@uploadthing/react/hooks";
-import { generateClientDropzoneAccept } from "uploadthing/client";
+type UpdateEventProps = {
+  params: {
+    id: string
+  }
+}
 
-import { Button } from "@/components/ui/button";
-import { convertFileToUrl } from "@/lib/utils";
+const UpdateEvent = async ({ params: { id } }: UpdateEventProps) => {
+  const { sessionClaims } = auth();
 
-type FileUploaderProps = {
-  onFieldChange: (url: string) => void;
-  imageUrl: string;
-  setFiles: Dispatch<SetStateAction<File[]>>;
-};
-
-export function FileUploader({
-  imageUrl,
-  onFieldChange,
-  setFiles,
-}: FileUploaderProps) {
-  const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
-    setFiles(acceptedFiles);
-    onFieldChange(convertFileToUrl(acceptedFiles[0]));
-  }, []);
-
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    accept: "image/*" ? generateClientDropzoneAccept(["image/*"]) : undefined,
-  });
+  const userId = sessionClaims?.userId as string;
+  const event = await getEventById(id)
 
   return (
-    <div
-      {...getRootProps()}
-      className="flex-center bg-dark-3 flex h-72 cursor-pointer flex-col overflow-hidden rounded-xl bg-grey-50"
-    >
-      <input {...getInputProps()} className="cursor-pointer" />
+    <>
+      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
+        <h3 className="wrapper h3-bold text-center sm:text-left">Update Event</h3>
+      </section>
 
-      {imageUrl ? (
-        <div className="flex h-full w-full flex-1 justify-center ">
-          <img
-            src={imageUrl}
-            alt="image"
-            width={250}
-            height={250}
-            className="w-full object-cover object-center"
-          />
-        </div>
-      ) : (
-        <div className="flex-center flex-col py-5 text-grey-500">
-          <img
-            src="/assets/icons/upload.svg"
-            width={77}
-            height={77}
-            alt="file upload"
-          />
-          <h3 className="mb-2 mt-2">Drag photo here</h3>
-          <p className="p-medium-12 mb-4">SVG, PNG, JPG</p>
-          <Button type="button" className="rounded-full">
-            Select from computer
-          </Button>
-        </div>
-      )}
-    </div>
-  );
+      <div className="wrapper my-8">
+        <EventForm 
+          type="Update" 
+          event={event} 
+          eventId={event._id} 
+          userId={userId} 
+        />
+      </div>
+    </>
+  )
 }
+
+export default UpdateEvent

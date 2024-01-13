@@ -5,25 +5,25 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "tailwinf.config.tsinline-flex tailwinf.config.tsitems-center tailwinf.config.tsjustify-center tailwinf.config.tswhitespace-nowrap tailwinf.config.tsrounded-md tailwinf.config.tstext-sm tailwinf.config.tsfont-medium tailwinf.config.tsring-offset-background tailwinf.config.tstransition-colors focus-visible:tailwinf.config.tsoutline-none focus-visible:tailwinf.config.tsring-2 focus-visible:tailwinf.config.tsring-ring focus-visible:tailwinf.config.tsring-offset-2 disabled:tailwinf.config.tspointer-events-none disabled:tailwinf.config.tsopacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "tailwinf.config.tsbg-primary tailwinf.config.tstext-primary-foreground hover:tailwinf.config.tsbg-primary/90",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
         destructive:
-          "tailwinf.config.tsbg-destructive tailwinf.config.tstext-destructive-foreground hover:tailwinf.config.tsbg-destructive/90",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "tailwinf.config.tsborder tailwinf.config.tsborder-input tailwinf.config.tsbg-background hover:tailwinf.config.tsbg-accent hover:tailwinf.config.tstext-accent-foreground",
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary:
-          "tailwinf.config.tsbg-secondary tailwinf.config.tstext-secondary-foreground hover:tailwinf.config.tsbg-secondary/80",
-        ghost: "hover:tailwinf.config.tsbg-accent hover:tailwinf.config.tstext-accent-foreground",
-        link: "tailwinf.config.tstext-primary tailwinf.config.tsunderline-offset-4 hover:tailwinf.config.tsunderline",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "tailwinf.config.tsh-10 tailwinf.config.tspx-4 tailwinf.config.tspy-2",
-        sm: "tailwinf.config.tsh-9 tailwinf.config.tsrounded-md tailwinf.config.tspx-3",
-        lg: "tailwinf.config.tsh-11 tailwinf.config.tsrounded-md tailwinf.config.tspx-8",
-        icon: "tailwinf.config.tsh-10 tailwinf.config.tsw-10",
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {
